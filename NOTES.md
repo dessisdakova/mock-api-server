@@ -60,3 +60,5 @@ By default, all containers within the same Docker Compose file are part of the s
 - `Self-assigned certificates`: Since the mock API server is using self-assigned certificates for HTTPS, we need to download those certificates and pass them as an argument when sending HTTPS requests.
 - `Add HTTPS configuration to Python tests`: The server provides the root and intermediate certificates through endpoints. The client (requests library) must use these certificates to validate the server's identity when calling its HTTPS endpoints.
 - `subjectAltName`: This field is used to specify the valid hostnames for the SSL certificate. The `<mock-hostname>` placeholder should be replaced with the actual hostname that matches the server. I've replaced it with `localhost` to run tests against my local machine and `api-mock` to run tests in tests servoce against the api-mock container.
+# Database
+`mock-database` service is created by using already created PostgreSQL image, sets nesseccary values, states and ports and copies the file that populates the database after the continer is started.  

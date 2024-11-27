@@ -7,7 +7,9 @@ import requests
 @pytest.fixture(scope="session")
 def config():
     """Load the configuration/protocol from config.json."""
-    with open("config.json") as file:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(current_dir, "config.json")
+    with open(config_path) as file:
         data = json.load(file)
     return data
 

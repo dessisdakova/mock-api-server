@@ -1,12 +1,6 @@
 import pytest
 import requests
-import json
-
-
-# Load test data from JSON file
-def load_test_data(file_path, test_case):
-    with open(file_path, 'r') as file:
-        return json.load(file)[test_case]
+from test_data_for_endpoints.data_loader import load_test_data
 
 
 def assert_successful_get_request(response, expected_values):
@@ -85,7 +79,7 @@ def test_adding_invalid_value_to_guids_list(base_url, add_guid, ca_bundle):
     assert response.headers.get("Content-Type", "").startswith("text/html"), "Response is not HTML."
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_12"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_12"))
 def test_changing_response_of_get_req(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_12"""
     # arrange
@@ -102,7 +96,7 @@ def test_changing_response_of_get_req(base_url, endpoints_dev, ca_bundle, test_d
     send_and_assert_get_request_after_put_request(response, endpoints_dev, ca_bundle)
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_13"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_13"))
 def test_behavior_when_key_is_missing(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_13"""
     # arrange
@@ -117,7 +111,7 @@ def test_behavior_when_key_is_missing(base_url, endpoints_dev, ca_bundle, test_d
     assert response.headers.get("Content-Type", "").startswith("text/html"), "Response is not HTML."
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_14"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_14"))
 def test_behavior_when_status_code_is_sent_as_an_array_or_float(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_14"""
     # arrange
@@ -138,7 +132,7 @@ def test_behavior_when_status_code_is_sent_as_an_array_or_float(base_url, endpoi
     assert response_get.headers.get("Content-Type", "").startswith("text/html"), "Response of GET request is not HTML."
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_15"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_15"))
 def test_behavior_when_status_code_is_sent_as_an_object(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_15"""
     # arrange
@@ -155,7 +149,7 @@ def test_behavior_when_status_code_is_sent_as_an_object(base_url, endpoints_dev,
     send_and_assert_get_request_after_put_request(response, endpoints_dev, ca_bundle)
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_16"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_16"))
 def test_behavior_when_status_code_is_sent_as_an_invalid_string(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_16"""
     # arrange
@@ -173,7 +167,7 @@ def test_behavior_when_status_code_is_sent_as_an_invalid_string(base_url, endpoi
         requests.get(endpoints_dev["guids"], verify=ca_bundle)
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_17"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_17"))
 def test_behavior_when_status_code_is_an_integer_with_invalid_code(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_17"""
     # arrange
@@ -191,7 +185,7 @@ def test_behavior_when_status_code_is_an_integer_with_invalid_code(base_url, end
         requests.get(endpoints_dev["guids"], verify=ca_bundle)
 
 
-@pytest.mark.parametrize("test_data", load_test_data("test_data/test_data_inv.json", "TC_INV_18"))
+@pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_18"))
 def test_behavior_when_status_code_is_an_integer_with_valid_code(base_url, endpoints_dev, ca_bundle, test_data):
     """TC_INV_18"""
     # arrange

@@ -167,7 +167,7 @@
       "body": [{"build": "20240410.1854-8f4e21frg65t",
         "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
         "version": "2.3.12"}],
-      "status_code": 199
+      "status_code": 99
     },
         {
       "body": [{"build": "20240410.1854-8f4e21frg65t",
@@ -296,7 +296,7 @@
       "body": {
         "guids": ["0001", "0002"]
       },
-      "status_code": 199
+      "status_code": 100
     },
     {
       "body": {

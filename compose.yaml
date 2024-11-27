@@ -12,6 +12,7 @@ services:
     working_dir: /opt/tests
     volumes:
       - api_mock_certs:/root/ca/rsa/volumed_dir
+      - ./tests:/opt/tests
 
   api-mock:
     build:

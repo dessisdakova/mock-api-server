@@ -33,7 +33,7 @@ def test_uploading_file_successfully(base_url, endpoints_files, ca_bundle):
     """TC_INV_FILES_03"""
     # arrange
     file_name = "upload_this.txt"  # expected to exist in the same directory as the test
-    file_path = f"test_data/{file_name}"  # used to open the file for reading
+    file_path = f"test_data_for_endpoints/{file_name}"  # used to open the file for reading
 
     # act
     # In order to send a file, it needs to be read and converted into a format that can be included in the request
