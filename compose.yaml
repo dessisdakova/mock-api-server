@@ -1,23 +1,22 @@
 services:
   tests:
-    # TODO by students: create own tests image using separate Dockerfile
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.tests
     container_name: tests-server
     depends_on:
       api-mock:
         condition: service_started
     environment:
       - REQUESTS_CA_BUNDLE=/root/ca/rsa/volumed_dir/full-chain.cert.pem
-    working_dir: /opt/project
+    working_dir: /opt/tests
     volumes:
-      - .:/opt/project
       - api_mock_certs:/root/ca/rsa/volumed_dir
-#  infinite loop to run container
-#    entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
-    entrypoint: ["ping", "-c", "5", "api-mock-server"]
 
   api-mock:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: api-mock-server
     restart: always
     volumes:

@@ -1,0 +1,334 @@
+{
+  "TC_INV_02": [
+    {
+      "body": [],
+      "status_code": 201
+    },
+    {
+      "body": {},
+      "status_code": 201
+    },
+    {
+      "body": [],
+      "status_code": "201"
+    },
+    {
+      "body": [
+        {
+          "build": "20240410.1854-8f4e21frg65t",
+          "deviceAddresses": {
+            "fqdn": "test.com",
+            "ipv4Address": "10.0.49.140",
+            "ipv6Address": "null"
+          },
+          "id": "UPDATED_1",
+          "ipAddress": "10.0.49.140",
+          "model": "TEST_DEVICE",
+          "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+          "version": "2.3.12"
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "body": [
+        {
+          "deviceAddresses": {
+            "fqdn": "test.com",
+            "ipv4Address": "10.0.49.140",
+            "ipv6Address": "null"
+          },
+          "id": "UPDATED_1",
+          "ipAddress": "10.0.49.140",
+          "model": "TEST_DEVICE",
+          "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+          "version": "2.3.12"
+        }
+      ],
+      "status_code": 201
+    },
+    {
+      "body": [
+        {
+          "build": "20240410.1854-8f4e21frg65t",
+          "deviceAddresses": {
+            "fqdn": "test.com",
+            "ipv4Address": "10.0.49.140",
+            "ipv6Address": "null"
+          },
+          "id": 1,
+          "ipAddress": "10.0.49.140",
+          "model": "TEST_DEVICE",
+          "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+          "version": "2.3.12"
+        }
+      ],
+      "status_code": 201
+    }
+  ],
+  "TC_INV_03": [
+    {
+      "body": [
+        {
+          "build": "20240410.1854-8f4e21frg65t",
+          "deviceAddresses": {
+            "fqdn": "test.com",
+            "ipv4Address": "10.0.49.140",
+            "ipv6Address": "null"
+          },
+          "id": "UPDATED_1",
+          "ipAddress": "10.0.49.140",
+          "model": "TEST_DEVICE",
+          "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+          "version": "2.3.12"
+        }
+      ]
+    },
+    {
+      "status_code": 201
+    }
+  ],
+  "TC_INV_04": [
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "deviceAddresses": {"fqdn": "test.com", "ipv4Address": "10.0.49.140", "ipv6Address": "null"},
+        "id": "UPDATED_1",
+        "ipAddress": "10.0.49.140",
+        "model": "TEST_DEVICE",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": [200]
+    },
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "deviceAddresses": {"fqdn": "test.com", "ipv4Address": "10.0.49.140", "ipv6Address": "null"},
+        "id": "UPDATED_1",
+        "ipAddress": "10.0.49.140",
+        "model": "TEST_DEVICE",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 200.00
+    }
+  ],
+  "TC_INV_05": [
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "deviceAddresses": {"fqdn": "test.com", "ipv4Address": "10.0.49.140", "ipv6Address": "null"},
+        "id": "UPDATED_1",
+        "ipAddress": "10.0.49.140",
+        "model": "TEST_DEVICE",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": {"code": 300}
+    }
+  ],
+  "TC_INV_06": [
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "deviceAddresses": {"fqdn": "test.com", "ipv4Address": "10.0.49.140", "ipv6Address": "null"},
+        "id": "UPDATED_1",
+        "ipAddress": "10.0.49.140",
+        "model": "TEST_DEVICE",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": "text"
+    },
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "deviceAddresses": {"fqdn": "test.com", "ipv4Address": "10.0.49.140", "ipv6Address": "null"},
+        "id": "UPDATED_1",
+        "ipAddress": "10.0.49.140",
+        "model": "TEST_DEVICE",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": "200.00"
+    }
+  ],
+  "TC_INV_07": [
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": -200
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 0
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 100
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 199
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 1000
+    }
+  ],
+  "TC_INV_08": [
+    {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 200
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 300
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 500
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 707
+    },
+        {
+      "body": [{"build": "20240410.1854-8f4e21frg65t",
+        "serialNum": "TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec",
+        "version": "2.3.12"}],
+      "status_code": 999
+    }
+  ],
+  "TC_INV_12": [
+    {
+      "body": {
+        "guids": []
+      },
+      "status_code": 333
+    },
+    {
+      "body": {
+        "guids": { }
+      },
+      "status_code": 333
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 333
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": "333"
+    }
+  ],
+  "TC_INV_13": [
+    {
+      "status_code": 333
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"] }
+    }
+  ],
+  "TC_INV_14": [
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": [333]
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 333.00
+    }
+  ],
+  "TC_INV_15": [
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": {"code": 204}
+    }
+  ],
+  "TC_INV_16": [
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": "text"
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": "400.00"
+    }
+  ],
+  "TC_INV_17": [
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": -1
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 0
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 199
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 1000
+    }
+  ],
+  "TC_INV_18": [
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 200
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 201
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 500
+    },
+    {
+      "body": {
+        "guids": ["0001", "0002"]
+      },
+      "status_code": 999
+    }
+  ]
+}

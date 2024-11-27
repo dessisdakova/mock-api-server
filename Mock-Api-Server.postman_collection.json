@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "e5dadb53-f2cf-4232-b21a-927dba477c84",
+		"name": "Mock-Api-Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28726170"
+	},
+	"item": [
+		{
+			"name": "Get Inventory Appliances",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseHTTP}}/inventory/devices",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"inventory",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change GET response",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"body\": [\r\n    {\r\n        \"build\": \"20240410.1854-8f4e21frg65t\",\r\n        \"deviceAddresses\": {\r\n            \"fqdn\": \"test.com\",\r\n            \"ipv4Address\": \"10.0.49.140\",\r\n            \"ipv6Address\": null\r\n        },\r\n        \"id\": 2,\r\n        \"ipAddress\": \"10.0.49.140\",\r\n        \"model\": \"TEST_DEVICE2\",\r\n        \"serialNum\": \"TEST1-1fecaf6a-0619-41b1-86d8-acf36064f9ec\",\r\n        \"version\": \"2.3.12\"\r\n    }\r\n  ],\r\n  \"status_code\": 201\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseHTTP}}/inventory/devices",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"inventory",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all guids in list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseHTTP}}/guids",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"guids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add guid to list",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseHTTP}}/7777/add",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"7777",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change GET response",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"body\": {\r\n    \"guid\": [7777, 9999, 3333]\r\n  },\r\n  \"status_code\":  201\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseHTTP}}/guids",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"guids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Certificates",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseHTTP}}/mock_certs/root_ca",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"mock_certs",
+						"root_ca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Intermediate Certificated",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseHTTP}}/mock_certs/intermediate_ca",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"mock_certs",
+						"intermediate_ca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload file",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/SoftServe/Homework/mock-api-server-solution/upload_this.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseHTTP}}/file/add",
+					"host": [
+						"{{baseHTTP}}"
+					],
+					"path": [
+						"file",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseHTTP",
+			"value": "http://localhost:8080\n",
+			"type": "string"
+		},
+		{
+			"key": "baseHTTPS",
+			"value": "https://localhost:8443\n",
+			"type": "string"
+		}
+	]
+}

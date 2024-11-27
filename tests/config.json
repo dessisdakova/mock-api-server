@@ -1,0 +1,6 @@
+{
+    "protocol": "http",
+    "_comment_protocol": "http or https",
+    "host": "localhost",
+    "_comment_host": "localhost or api-mock (for container)"
+}
