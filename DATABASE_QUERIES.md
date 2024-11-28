@@ -36,7 +36,7 @@ product_name| unit_price
 ### **City-wise average age of employees above 60:** <br>
 UPDATED QUERY:
 ```sql
-    SSELECT city, AVG(EXTRACT(year FROM AGE(CURRENT_TIMESTAMP, birth_date))) AS avg_age
+    SELECT city, AVG(EXTRACT(year FROM AGE(CURRENT_TIMESTAMP, birth_date))) AS avg_age
     FROM employees
     GROUP BY city
     HAVING AVG(EXTRACT(year FROM AGE(CURRENT_TIMESTAMP, birth_date))) > 60;

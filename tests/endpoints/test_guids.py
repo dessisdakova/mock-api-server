@@ -1,6 +1,6 @@
 import pytest
 import requests
-from test_data_for_endpoints.data_loader import load_test_data
+from common.data_loader import load_test_data
 
 
 def assert_successful_get_request(response, expected_values):
@@ -47,7 +47,7 @@ def test_retrieving_guids_list(base_url, endpoints_dev, ca_bundle):
     assert_successful_get_request(response, expected_values)
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def expected_values():
     """Fixture to store expected values across tests"""
     return []

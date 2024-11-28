@@ -1,6 +1,6 @@
 import pytest
 import requests
-from test_data_for_endpoints.data_loader import load_test_data
+from common.data_loader import load_test_data
 
 
 def assert_successful_get_request(response, expected_keys, sub_key_name, expected_sub_keys):

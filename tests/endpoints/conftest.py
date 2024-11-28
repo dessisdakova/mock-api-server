@@ -1,3 +1,4 @@
+from pathlib import Path
 import pytest
 import json
 import os
@@ -7,8 +8,10 @@ import requests
 @pytest.fixture(scope="session")
 def config():
     """Load the configuration/protocol from config.json."""
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    config_path = os.path.join(current_dir, "config.json")
+    """current_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(current_dir, "config.json")"""
+    current_dir = Path(__file__).resolve().parent
+    config_path = current_dir / "config.json"
     with open(config_path) as file:
         data = json.load(file)
     return data
@@ -43,11 +46,14 @@ def base_url(config):
 def fetch_and_save_certificates(host):
     """Download root and intermediate CA certificates from the server and save them locally.
     Combine them into a single CA bundle for HTTPS requests."""
-    certs_dir = "certs"
+    """certs_dir = "certs"
     os.makedirs(certs_dir, exist_ok=True)
 
     # File path
-    ca_bundle_path = os.path.join(certs_dir, "ca_bundle.pem")
+    ca_bundle_path = os.path.join(certs_dir, "ca_bundle.pem")"""
+    certs_dir = Path("certs")
+    certs_dir.mkdir(exist_ok=True)
+    ca_bundle_path = certs_dir / "ca_bundle.pem"
 
     # Fetch certificates
     if host == "localhost":
@@ -99,7 +105,7 @@ def endpoints_files(base_url):
     }
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="function", autouse=True)
 def reset_server_state(base_url, endpoints_dev, ca_bundle):
     """Reset the server state to its initial conditions after all tests"""
     yield

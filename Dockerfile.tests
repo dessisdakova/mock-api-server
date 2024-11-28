@@ -4,21 +4,9 @@ USER root
 # Set working directory inside the container
 WORKDIR /opt/tests
 
-# For HTTPS requests
-ENV REQUESTS_CA_BUNDLE=
-ENV PYTHONWARNINGS="ignore:Unverified HTTPS request"
-COPY rsa-cert-generation/create_certs.sh            /root/ca/rsa/create_certs.sh
-COPY rsa-cert-generation/root-openssl.conf          /root/ca/rsa/openssl.cnf
-COPY rsa-cert-generation/intermediate-openssl.conf  /root/ca/rsa/intermediate/openssl.cnf
-
-RUN /root/ca/rsa/create_certs.sh
-
 # Install dependencies
 COPY python_packages.txt /opt/tests/python_packages.txt
 RUN pip install --no-cache-dir -r python_packages.txt
 
-# Copy test files from local machine to container
-# COPY tests /opt/tests
-
 # Command to run the tests
-CMD ["pytest"]
+# CMD ["pytest"]
