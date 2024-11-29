@@ -23,6 +23,7 @@ def db_connection():
     }
 
     with psycopg2.connect(**db_params) as conn:
+        assert conn is not None, "Connection to the database is not established."
         yield conn
 
 
