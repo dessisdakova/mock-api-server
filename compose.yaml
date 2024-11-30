@@ -7,9 +7,12 @@ services:
     depends_on:
       api-mock:
         condition: service_started
+    environment:
+      - REQUESTS_CA_BUNDLE=/root/ca/rsa/volumed_dir/full-chain.cert.pem
     working_dir: /opt/tests
     volumes:
-      - ./tests:/opt/tests 
+      - ./tests:/opt/tests
+      - api_mock_certs:/root/ca/rsa/volumed_dir
     entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
 
   api-mock:

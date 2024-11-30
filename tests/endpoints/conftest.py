@@ -7,9 +7,7 @@ import requests
 
 @pytest.fixture(scope="session")
 def config():
-    """Load the configuration/protocol from config.json."""
-    """current_dir = os.path.dirname(os.path.abspath(__file__))
-    config_path = os.path.join(current_dir, "config.json")"""
+    """Load the configuration from config.json."""
     current_dir = Path(__file__).resolve().parent
     config_path = current_dir / "config.json"
     with open(config_path) as file:
@@ -46,11 +44,6 @@ def base_url(config):
 def fetch_and_save_certificates(host):
     """Download root and intermediate CA certificates from the server and save them locally.
     Combine them into a single CA bundle for HTTPS requests."""
-    """certs_dir = "certs"
-    os.makedirs(certs_dir, exist_ok=True)
-
-    # File path
-    ca_bundle_path = os.path.join(certs_dir, "ca_bundle.pem")"""
     certs_dir = Path("certs")
     certs_dir.mkdir(exist_ok=True)
     ca_bundle_path = certs_dir / "ca_bundle.pem"
@@ -76,7 +69,10 @@ def fetch_and_save_certificates(host):
 def ca_bundle(config):
     """Provide the CA bundle path if HTTPS is enabled. Return None if using HTTP."""
     if config["protocol"].lower() == "https":
-        return fetch_and_save_certificates(config["host"])
+        if config["certs"] == "download":
+            return fetch_and_save_certificates(config["host"])
+        elif config["certs"] == "mounted":
+            return None  # requests lib by default uses REQUESTS_CA_BUNDLE set in compose.yaml
     return None
 
 
