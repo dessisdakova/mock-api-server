@@ -34,6 +34,7 @@ class CheckoutStepOneLocators:
 
 class CheckoutStepTwoLocators:
     BASE_URL = "https://www.saucedemo.com/checkout-step-two.html"
+    ITEMS_IN_ORDER = (By.CSS_SELECTOR, "div[data-test='inventory-item-name']")
     FINISH_BUTTON = (By.CSS_SELECTOR, "button[data-test='finish']")
     SUMMARY_INFO_DIV = (By.CLASS_NAME, "summary_info")  # for explicit wait
 

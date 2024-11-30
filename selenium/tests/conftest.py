@@ -4,7 +4,8 @@ import pytest
 from typing import Generator
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver import Remote
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.edge.options import Options
 
 
 @pytest.fixture(scope="session")
@@ -27,11 +28,11 @@ def driver(config) -> Generator[webdriver.Remote, None, None]:
     options.add_argument("--disable-dev-shm-usage")
 
     if browser == "chrome":
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
     elif browser == "firefox":
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(options=options)
     elif browser == "edge":
-        driver = webdriver.Edge()
+        driver = webdriver.Edge(options=options)
     else:
         raise ValueError(f"Unsupported browser: '{browser}'")
 

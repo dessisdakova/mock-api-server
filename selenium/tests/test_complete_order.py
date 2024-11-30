@@ -34,6 +34,7 @@ def test_automate_steps_and_assert_message(driver):
     checkout_two_page = CheckoutStepTwoPage(driver)
     checkout_two_page.load(CheckoutStepTwoLocators.BASE_URL, CheckoutStepTwoLocators.SUMMARY_INFO_DIV)
     assert "checkout-step-two" in driver.current_url, "Checkout-step-two page not loaded."
+    assert checkout_two_page.get_items_count_in_order() == 1, "Item was not added to order."
     checkout_two_page.finish_order()
 
     checkout_complete_page = CheckoutCompletePage(driver)
