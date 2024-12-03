@@ -48,9 +48,15 @@ By default, all containers within the same Docker Compose file are part of the s
 	- `443` (HTTPS) mapped to port 8443 on the host machine.
 
 - *Environment variables:*
-	- `REQUESTS_CA_BUNDLE`
+	- `REQUESTS_CA_BUNDLE` - variable for requests library for accessing https endpoints
 	- `PYTHONWARNINGS`
 	- `MOCK_HOSTNAME`
+# Dockerfile for tests service
+For the tests conianer I am using Python base image, like `python:3.11-slim`. This gives a clean Python environment in the container without needing a virtual environment. In a separate file `python_packages.txt` I've listed all required dependencies to install when creating the container. For running tests I used two approaches:
+1. `CMD ["pytest"]` in Dockerfile - each time the container is started the tests run automatically.
+2. `entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]` in compose.yaml - the container starts with an infinite loop. This way it is accessible via terminal with `docker-compose exec -it tests bash` and tests can be run with `pytest` command inside the container. <br>
+
+In `compose.yaml` I've mounted the local folder with tests to a folder inside the container, so when changes are make locally they apppear in the container as well. Another approach is to copy the same folder in `Dockerfile.tests` and with this approach when changes are made locally the conitaner has to be rebuild so the changes are visible inside the container as well.
 # HTTPS and certificates
 - `HTTPS` stands for Hypertext Transfer Protocol Secure. It ensures secure communication by encrypting data transferred between a client and a server. 
 - `Certificate Validation`: When a client connects to a server over HTTPS, the server sends its certificates (or chain of certidicates). The client verifies the server's certificates to confirm its identity and establish trust.
@@ -59,6 +65,6 @@ By default, all containers within the same Docker Compose file are part of the s
 - `Encryption with Certificates`: After verifying the server’s certificate, the client generates a random *session key* for encryption. It is securely shared with the server using its certificate. Subsequent communication between the client and server is encrypted using this session key.
 - `Self-assigned certificates`: Since the mock API server is using self-assigned certificates for HTTPS, we need to download those certificates and pass them as an argument when sending HTTPS requests.
 - `Add HTTPS configuration to Python tests`: The server provides the root and intermediate certificates through endpoints. The client (requests library) must use these certificates to validate the server's identity when calling its HTTPS endpoints.
-- `subjectAltName`: This field is used to specify the valid hostnames for the SSL certificate. The `<mock-hostname>` placeholder should be replaced with the actual hostname that matches the server. I've replaced it with `localhost` to run tests against my local machine and `api-mock` to run tests in tests servoce against the api-mock container.
+- `subjectAltName`: SAN (subject alternative name) is used to specify the domain names and IP addresses that are secured by the certificate. In the file `intermediate-openssl.conf`, where `subjectAltName` is set, `<mock-hostname>` placeholder should be replaced with the actual hostname that matches the server. I've replaced it with `localhost` to run tests against my local machine and `api-mock` to run tests in tests servoce against the api-mock container (`subjectAltName = DNS:localhost, DNS:api-mock`).
 # Database
 `mock-database` service is created by using already created PostgreSQL image, sets nesseccary values, states and ports and copies the file that populates the database after the continer is started.  
