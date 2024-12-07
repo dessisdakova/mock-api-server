@@ -1,0 +1,23 @@
+[
+  {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "first_name": "Desislava",
+    "last_name": "Dakova",
+    "postal_code": "1220"
+  },
+  {
+    "username": "performance_glitch_user",
+    "password": "secret_sauce",
+    "first_name": "Desislava",
+    "last_name": "Dakova",
+    "postal_code": "1220"
+  },
+  {
+    "username": "visual_user",
+    "password": "secret_sauce",
+    "first_name": "Desislava",
+    "last_name": "Dakova",
+    "postal_code": "1220"
+  }
+]

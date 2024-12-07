@@ -18,17 +18,17 @@
     },
     {
       "description": "Sum of freight charges by employee",
-      "query": "SELECT employee_id, SUM(freight) FROM orders GROUP BY employee_id;",
+      "query": "SELECT employee_id, SUM(freight) FROM orders GROUP BY employee_id ORDER BY employee_id;",
       "expected_results": [
-        [8, 7487.8804],
-        [7, 6665.4404],
-        [9, 3326.2598],
-        [1,  8836.639],
-        [5, 3918.7104],
-        [2,  8696.408],
+        [1, 8836.639],
+        [2, 8696.408],
+        [3, 10884.737],
         [4, 11346.138],
+        [5, 3918.7104],
         [6, 3780.4695],
-        [3, 10884.737]
+        [7, 6665.4404],
+        [8, 7487.8804],
+        [9, 3326.2598]
       ]
     },
         {

@@ -1,7 +1,7 @@
 from pathlib import Path
+import os
 import pytest
 import json
-import os
 import requests
 
 
@@ -44,7 +44,7 @@ def base_url(config):
 def fetch_and_save_certificates(host):
     """Download root and intermediate CA certificates from the server and save them locally.
     Combine them into a single CA bundle for HTTPS requests."""
-    certs_dir = Path("certs")
+    certs_dir = Path(__file__).resolve().parent.parent / "certs"
     certs_dir.mkdir(exist_ok=True)
     ca_bundle_path = certs_dir / "ca_bundle.pem"
 
@@ -58,9 +58,9 @@ def fetch_and_save_certificates(host):
 
     # Save certificates
     with open(ca_bundle_path, "wb") as file:
-        file.write(root_ca_response.content)
         file.write(intermediate_ca_response.content)
-
+        file.write(root_ca_response.content)
+        
     print(f"Certificates saved successfully at {ca_bundle_path}")
     return ca_bundle_path
 
@@ -72,7 +72,7 @@ def ca_bundle(config):
         if config["certs"] == "download":
             return fetch_and_save_certificates(config["host"])
         elif config["certs"] == "mounted":
-            return None  # requests lib by default uses REQUESTS_CA_BUNDLE set in compose.yaml
+            return Path(os.getenv("REQUESTS_CA_BUNDLE"))
     return None
 
 

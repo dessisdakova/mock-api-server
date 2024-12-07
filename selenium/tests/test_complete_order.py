@@ -1,13 +1,24 @@
+import json
+from pathlib import Path
+import pytest
 from pages import *
 
 
-def test_automate_steps_and_assert_message(driver):
+def load_input_data():
+    file_path = Path(__file__).resolve().parent / "input_data.json"
+    with open(file_path, "r") as file:
+        data = json.load(file)
+    return data
+
+
+@pytest.mark.parametrize("input_data", load_input_data())
+def test_automate_steps_and_assert_message(driver, input_data):
     login_page = LoginPage(driver)
     login_page.load(LoginPageLocators.BASE_URL, LoginPageLocators.LOGO_DIV)
     assert "www.saucedemo.com" in driver.current_url, "Site not loaded."
-    login_page.enter_credentials("standard_user", "secret_sauce")
-    assert driver.find_element(*LoginPageLocators.USERNAME_FIELD).get_attribute("value") == "standard_user"
-    assert driver.find_element(*LoginPageLocators.PASSWORD_FIELD).get_attribute("value") == "secret_sauce"
+    login_page.enter_credentials(input_data["username"], input_data["password"])
+    assert driver.find_element(*LoginPageLocators.USERNAME_FIELD).get_attribute("value") == input_data["username"]
+    assert driver.find_element(*LoginPageLocators.PASSWORD_FIELD).get_attribute("value") == input_data["password"]
     login_page.click_login_button()
 
     inventory_page = InventoryPage(driver)
@@ -25,10 +36,10 @@ def test_automate_steps_and_assert_message(driver):
     checkout_one_page = CheckoutStepOnePage(driver)
     checkout_one_page.load(CheckoutStepOneLocators.BASE_URL, CheckoutStepOneLocators.CHECKOUT_INFO_CONTAINER)
     assert "checkout-step-one" in driver.current_url, "Checkout-step-one page not loaded."
-    checkout_one_page.enter_information("Desislava", "Dakova", "1220")
-    assert driver.find_element(*CheckoutStepOneLocators.FIRST_NAME_FIELD).get_attribute("value") == "Desislava"
-    assert driver.find_element(*CheckoutStepOneLocators.LAST_NAME_FIELD).get_attribute("value") == "Dakova"
-    assert driver.find_element(*CheckoutStepOneLocators.ZIP_CODE_FIELD).get_attribute("value") == "1220"
+    checkout_one_page.enter_information(input_data["first_name"], input_data["last_name"], input_data["postal_code"])
+    assert driver.find_element(*CheckoutStepOneLocators.FIRST_NAME_FIELD).get_attribute("value") == input_data["first_name"]
+    assert driver.find_element(*CheckoutStepOneLocators.LAST_NAME_FIELD).get_attribute("value") == input_data["last_name"]
+    assert driver.find_element(*CheckoutStepOneLocators.ZIP_CODE_FIELD).get_attribute("value") == input_data["postal_code"]
     checkout_one_page.click_continue_button()
 
     checkout_two_page = CheckoutStepTwoPage(driver)

@@ -38,7 +38,7 @@ def send_and_assert_get_request_after_put_request(put_response, endpoints_dev, c
             "Status code should remain the same when 'new_status_code' is invalid."
 
 
-def test_retrieving_guids_list(base_url, endpoints_dev, ca_bundle):
+def test_retrieving_guids_list(endpoints_dev, ca_bundle):
     """TC_INV_09"""
     # act
     response = requests.get(endpoints_dev["guids"], verify=ca_bundle)
@@ -68,7 +68,7 @@ def test_adding_valid_value_to_guids_list(base_url, add_guid, ca_bundle, expecte
 
 
 @pytest.mark.parametrize("add_guid", ["#", "/", "", "?"], indirect=True)
-def test_adding_invalid_value_to_guids_list(base_url, add_guid, ca_bundle):
+def test_adding_invalid_value_to_guids_list(add_guid, ca_bundle):
     """TC_INV_11"""
     # act
     response = requests.post(add_guid, verify=ca_bundle)
@@ -80,7 +80,7 @@ def test_adding_invalid_value_to_guids_list(base_url, add_guid, ca_bundle):
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_12"))
-def test_changing_response_of_get_req(base_url, endpoints_dev, ca_bundle, test_data):
+def test_changing_response_of_get_req(endpoints_dev, ca_bundle, test_data):
     """TC_INV_12"""
     # arrange
     body = {
@@ -97,7 +97,7 @@ def test_changing_response_of_get_req(base_url, endpoints_dev, ca_bundle, test_d
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_13"))
-def test_behavior_when_key_is_missing(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_key_is_missing(endpoints_dev, ca_bundle, test_data):
     """TC_INV_13"""
     # arrange
     body = test_data
@@ -112,7 +112,7 @@ def test_behavior_when_key_is_missing(base_url, endpoints_dev, ca_bundle, test_d
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_14"))
-def test_behavior_when_status_code_is_sent_as_an_array_or_float(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_sent_as_an_array_or_float(endpoints_dev, ca_bundle, test_data):
     """TC_INV_14"""
     # arrange
     body = {
@@ -133,7 +133,7 @@ def test_behavior_when_status_code_is_sent_as_an_array_or_float(base_url, endpoi
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_15"))
-def test_behavior_when_status_code_is_sent_as_an_object(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_sent_as_an_object(endpoints_dev, ca_bundle, test_data):
     """TC_INV_15"""
     # arrange
     body = {
@@ -150,7 +150,7 @@ def test_behavior_when_status_code_is_sent_as_an_object(base_url, endpoints_dev,
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_16"))
-def test_behavior_when_status_code_is_sent_as_an_invalid_string(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_sent_as_an_invalid_string(endpoints_dev, ca_bundle, test_data):
     """TC_INV_16"""
     # arrange
     body = {
@@ -168,7 +168,7 @@ def test_behavior_when_status_code_is_sent_as_an_invalid_string(base_url, endpoi
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_17"))
-def test_behavior_when_status_code_is_an_integer_with_invalid_code(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_an_integer_with_invalid_code(endpoints_dev, ca_bundle, test_data):
     """TC_INV_17"""
     # arrange
     body = {
@@ -186,7 +186,7 @@ def test_behavior_when_status_code_is_an_integer_with_invalid_code(base_url, end
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_18"))
-def test_behavior_when_status_code_is_an_integer_with_valid_code(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_an_integer_with_valid_code(endpoints_dev, ca_bundle, test_data):
     """TC_INV_18"""
     # arrange
     body = {

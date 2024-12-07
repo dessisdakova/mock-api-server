@@ -12,7 +12,7 @@ def assert_get_request(response):
         "Response is not sending certificates."
 
 
-def test_retrieving_root_certificates(base_url, endpoints_files, ca_bundle):
+def test_retrieving_root_certificates(endpoints_files, ca_bundle):
     """TC_INV_FILES_01"""
     # act
     response = requests.get(endpoints_files["root_certs"], verify=ca_bundle)
@@ -21,7 +21,7 @@ def test_retrieving_root_certificates(base_url, endpoints_files, ca_bundle):
     assert_get_request(response)
 
 
-def test_retrieving_intermediate_certificates(base_url, endpoints_files, ca_bundle):
+def test_retrieving_intermediate_certificates(endpoints_files, ca_bundle):
     """TC_INV_FILES_02"""
     # act
     response = requests.get(endpoints_files["intermediate_certs"], verify=ca_bundle)
@@ -30,7 +30,7 @@ def test_retrieving_intermediate_certificates(base_url, endpoints_files, ca_bund
     assert_get_request(response)
 
 
-def test_uploading_file_successfully(base_url, endpoints_files, ca_bundle):
+def test_uploading_file_successfully(endpoints_files, ca_bundle):
     """TC_INV_FILES_03"""
     # arrange
     file_name = "upload_this.txt"
@@ -50,7 +50,7 @@ def test_uploading_file_successfully(base_url, endpoints_files, ca_bundle):
     assert f"File uploaded successfully to /opt/project/upload/{file_name}" in response.text, "File was not uploaded."
 
 
-def test_sending_request_without_attached_file(base_url, endpoints_files, ca_bundle):
+def test_sending_request_without_attached_file(endpoints_files, ca_bundle):
     """TC_INV_FILES_04"""
     # act
     response = requests.post(endpoints_files["upload"], verify=ca_bundle)
@@ -60,7 +60,7 @@ def test_sending_request_without_attached_file(base_url, endpoints_files, ca_bun
     assert f"No file part in the request" in response.text, "Incorrect error message."
 
 
-def test_sending_request_without_selected_file(base_url, endpoints_files, ca_bundle):
+def test_sending_request_without_selected_file(endpoints_files, ca_bundle):
     """TC_INV_FILES_03"""
     # act
     response = requests.post(endpoints_files["upload"], files={"file": ("", b"")}, verify=ca_bundle)

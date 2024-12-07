@@ -1,15 +1,16 @@
 # Interact with the Inventory of Devices API
 There are three available endpoints for inventory devices: "**/inventory/devices**", "**/guids**" and "**/path:guid/add**" with the following requests implemented:
 ### GET /inventory/devices
-	- Headers: none explicitly mentioned, so default headers are used (for Postman remove "HOST") 
+	- Headers: none explicitly mentioned, so default headers are used
 	- Body: none
 	- Response body (retrieved from `inventory_devices.json`): 
  		[
 		    currently saved devices
 		]
 	- Response status code: 200 OK (initial, can be changed)
+	- Purpose: Retrieving inventory devices
 ### PUT /inventory/devices
-	- Headers: none explicitly mentioned, so default headers are used (for Postman remove "HOST")
+	- Headers: none explicitly mentioned, so default headers are used
 	- Body:
 		{
 		    "body": [
@@ -28,9 +29,9 @@ There are three available endpoints for inventory devices: "**/inventory/devices
    		    "new_body": request key "body",
 		    "new_status_code": request key "status_code"
 		}
- 	- Purpose: Updates the default_inventory_devices_response, which the GET request later uses.
+ 	- Purpose: Updating body and status code of GET request /inventory/devices
 ### POST /path:guid/add
-	- Headers: none explicitly mentioned, so default headers are used (for Postman remove "HOST")
+	- Headers: none explicitly mentioned, so default headers are used
  	- Path Parameter: guid - The GUID to be added is passed as part of the URL path. Example: /12345/add
 	- Body: none
 	- Response status code: 200
@@ -38,9 +39,9 @@ There are three available endpoints for inventory devices: "**/inventory/devices
 	 	{
 		    "guids": [ currently saved guids + guid from request ]
 		}
- 	- Purpose: Adds guid to guid list.
+ 	- Purpose: Adding guid to guid list
 ### GET /guids
-	- Headers: none explicitly mentioned, so default headers are used (for Postman remove "HOST")
+	- Headers: none explicitly mentioned, so default headers are used
 	- Body: none
 	- Response status code: 200 OK (initial, can be changed)
 	- Response body: 
@@ -49,8 +50,9 @@ There are three available endpoints for inventory devices: "**/inventory/devices
 		        currently saved guids
 		    ]
 		}
+	- Purpose: Retrieving all guids
 ### PUT /guids
-	- Headers: none explicitly mentioned, so default headers are used (for Postman remove "HOST")
+	- Headers: none explicitly mentioned, so default headers are used
  	- Body:
 		{
 		    "body": {
@@ -64,3 +66,4 @@ There are three available endpoints for inventory devices: "**/inventory/devices
    		    "new_body": request key "body",
 		    "new_status_code": request key "status_code"
 		}
+	- Purpose: Updating body and status code of GET request /guids

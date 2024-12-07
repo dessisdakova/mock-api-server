@@ -3,6 +3,9 @@ from pathlib import Path
 import pytest
 from typing import Generator
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.edge.options import Options
@@ -28,11 +31,14 @@ def driver(config) -> Generator[webdriver.Remote, None, None]:
     options.add_argument("--disable-dev-shm-usage")
 
     if browser == "chrome":
-        driver = webdriver.Chrome(options=options)
+        service = ChromeService()
+        driver = webdriver.Chrome(service=service, options=options)
     elif browser == "firefox":
-        driver = webdriver.Firefox(options=options)
+        service = FirefoxService()
+        driver = webdriver.Firefox(service=service, options=options)
     elif browser == "edge":
-        driver = webdriver.Edge(options=options)
+        service = EdgeService()
+        driver = webdriver.Edge(service=service, options=options)
     else:
         raise ValueError(f"Unsupported browser: '{browser}'")
 
@@ -49,3 +55,4 @@ def driver(config) -> Generator[webdriver.Remote, None, None]:
     options.set_capability("browserVersion", "latest")
     driver = Remote(command_executor=sauce_url, options=options)
     """
+

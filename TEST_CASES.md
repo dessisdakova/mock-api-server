@@ -57,7 +57,7 @@
 }
 ```
 
-- Test Case 2: Remove a key in the device object from the request body (remove `build` key).
+ - Test Case 2: Remove a key in the device object from the request body (remove `build` key).
  - Test Case 3: Change the value for a key to a different type (change `id` from string to integer).
  - Test Case 4: Send an empty list in the body (`[]`).
  - Test Case 5: Send an object (rather than a list) in the body (`{}`).

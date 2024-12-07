@@ -10,7 +10,6 @@ from common.data_loader import load_test_data
 def db_connection():
     """Fixture to set up and tear down the database connection before and after all tests"""
     # Load environment variables from .env file
-
     env_path = Path(__file__).parent / "db.env"
     load_dotenv(dotenv_path=env_path)
 

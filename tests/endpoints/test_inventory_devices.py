@@ -42,7 +42,7 @@ def assert_successful_put_request(body, response):
     assert data["new_status_code"] == body["status_code"], "'status_code' keys don't match."
 
 
-def test_retrieving_currently_saved_devices(base_url, endpoints_dev, ca_bundle):
+def test_retrieving_currently_saved_devices(endpoints_dev, ca_bundle):
     """TC_INV_01"""
     # arrange
     expected_keys = ["build", "deviceAddresses", "id", "ipAddress", "model", "serialNum", "version"]
@@ -57,7 +57,7 @@ def test_retrieving_currently_saved_devices(base_url, endpoints_dev, ca_bundle):
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_02"))
-def test_changing_response_of_get_req(base_url, endpoints_dev, ca_bundle, test_data):
+def test_changing_response_of_get_req(endpoints_dev, ca_bundle, test_data):
     """TC_INV_02"""
     # arrange
     body = {
@@ -74,7 +74,7 @@ def test_changing_response_of_get_req(base_url, endpoints_dev, ca_bundle, test_d
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_03"))
-def test_behavior_when_key_is_missing(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_key_is_missing(endpoints_dev, ca_bundle, test_data):
     """TC_INV_03"""
     # arrange
     body = test_data
@@ -89,7 +89,7 @@ def test_behavior_when_key_is_missing(base_url, endpoints_dev, ca_bundle, test_d
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_04"))
-def test_behavior_when_status_code_is_sent_as_an_array_or_float(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_sent_as_an_array_or_float(endpoints_dev, ca_bundle, test_data):
     """TC_INV_04"""
     # arrange
     body = {
@@ -110,7 +110,7 @@ def test_behavior_when_status_code_is_sent_as_an_array_or_float(base_url, endpoi
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_05"))
-def test_behavior_when_status_code_is_sent_as_an_object(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_sent_as_an_object(endpoints_dev, ca_bundle, test_data):
     """TC_INV_05"""
     # arrange
     body = {
@@ -127,7 +127,7 @@ def test_behavior_when_status_code_is_sent_as_an_object(base_url, endpoints_dev,
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_06"))
-def test_behavior_when_status_code_is_sent_as_an_invalid_string(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_sent_as_an_invalid_string(endpoints_dev, ca_bundle, test_data):
     """TC_INV_06"""
     # arrange
     body = {
@@ -145,7 +145,7 @@ def test_behavior_when_status_code_is_sent_as_an_invalid_string(base_url, endpoi
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_07"))
-def test_behavior_when_status_code_is_an_integer_with_invalid_code(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_an_integer_with_invalid_code(endpoints_dev, ca_bundle, test_data):
     """TC_INV_07"""
     # arrange
     body = {
@@ -163,7 +163,7 @@ def test_behavior_when_status_code_is_an_integer_with_invalid_code(base_url, end
 
 
 @pytest.mark.parametrize("test_data", load_test_data("test_data_inv.json", "TC_INV_08"))
-def test_behavior_when_status_code_is_an_integer_with_valid_code(base_url, endpoints_dev, ca_bundle, test_data):
+def test_behavior_when_status_code_is_an_integer_with_valid_code(endpoints_dev, ca_bundle, test_data):
     """TC_INV_08"""
     # arrange
     body = {
