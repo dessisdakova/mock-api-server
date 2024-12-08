@@ -13,7 +13,7 @@ services:
     volumes:
       - ./tests:/opt/tests
       - api_mock_certs:/root/ca/rsa/volumed_dir
-    entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
+    # entrypoint: ["sh", "-c", "while true; do sleep 1000; done"]
 
   api-mock:
     build:

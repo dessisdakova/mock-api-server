@@ -42,11 +42,11 @@
       "description": "City-wise average age of employees above 60",
       "query": "SELECT city, AVG(EXTRACT(year FROM AGE(CURRENT_TIMESTAMP, birth_date))) AS avg_age FROM employees GROUP BY city HAVING AVG(EXTRACT(year FROM AGE(CURRENT_TIMESTAMP, birth_date))) > 60;",
       "expected_results": [
-        ["Redmond", 87.0000000000000000],
-        ["London", 63.0000000000000000],
-        ["Tacoma", 72.0000000000000000],
+        ["Redmond",  87.0000000000000000],
+        ["London",   63.0000000000000000],
+        ["Tacoma",   72.0000000000000000],
         ["Kirkland", 61.0000000000000000],
-        ["Seattle", 70.5000000000000000]
+        ["Seattle",  71.0000000000000000]
 
       ]
     },
@@ -55,7 +55,7 @@
       "query": "SELECT first_name, last_name, EXTRACT(year from AGE(CURRENT_TIMESTAMP, birth_date)) AS age FROM employees ORDER BY age DESC LIMIT 3;",
       "expected_results": [
         ["Margaret", "Peacock", 87],
-        ["Nancy", "Davolio", 75],
+        ["Nancy", "Davolio", 76],
         ["Andrew", "Fuller", 72]
       ]
     }

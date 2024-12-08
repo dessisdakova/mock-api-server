@@ -74,7 +74,7 @@ RESULT:
  London   | 63.0000000000000000
  Tacoma   | 72.0000000000000000
  Kirkland | 61.0000000000000000
- Seattle  | 70.5000000000000000
+ Seattle  | 71.0000000000000000
 
 
 ### **Retrieve top 3 oldest employees:**
@@ -89,5 +89,5 @@ RESULT:
  first_name | last_name | age
 ------------|-----------|----
  Margaret   | Peacock   |  87
- Nancy      | Davolio   |  75
+ Nancy      | Davolio   |  76
  Andrew     | Fuller    |  72

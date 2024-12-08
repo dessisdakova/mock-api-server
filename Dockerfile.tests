@@ -9,4 +9,4 @@ COPY python_packages.txt /opt/tests/python_packages.txt
 RUN pip install --no-cache-dir -r python_packages.txt
 
 # Command to run the tests
-#CMD ["pytest"]
+CMD ["pytest"]

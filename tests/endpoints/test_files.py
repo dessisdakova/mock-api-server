@@ -68,3 +68,4 @@ def test_sending_request_without_selected_file(endpoints_files, ca_bundle):
     # assert
     assert response.status_code == 400, "Response status code is not 400 Bad Request."
     assert f"No selected file" in response.text, "Incorrect error message."
+    

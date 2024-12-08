@@ -1,8 +1,6 @@
 {
     "protocol": "https",
     "_comment_protocol": "http or https",
-    "host": "localhost",
-    "_comment_host": "localhost or api-mock (for container)",
-    "certs": "download",
-    "_comment_certs": "download or mounted(available only for running tests in container)"
+    "host": "api-mock",
+    "_comment_host": "localhost or api-mock (for container)"
 }

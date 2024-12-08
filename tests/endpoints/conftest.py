@@ -69,10 +69,7 @@ def fetch_and_save_certificates(host):
 def ca_bundle(config):
     """Provide the CA bundle path if HTTPS is enabled. Return None if using HTTP."""
     if config["protocol"].lower() == "https":
-        if config["certs"] == "download":
-            return fetch_and_save_certificates(config["host"])
-        elif config["certs"] == "mounted":
-            return Path(os.getenv("REQUESTS_CA_BUNDLE"))
+        return fetch_and_save_certificates(config["host"])
     return None
 
 
